@@ -1,0 +1,47 @@
+[package]
+name = "win"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+# http请求库
+http_req  = {version="^0.10"}
+# http_req  = {version="^0.10", default-features = false, features = ["rust-tls"]} 在linux上使用这个，可以免去编译时安装openssl库
+# 序列化工具库
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.85"
+# 加解密库
+rust-crypto = "0.2.36"
+# 系统信息库
+sysinfo = "0.30.5"
+# 编码库
+base64 = "0.21.7"
+# 获取mac地址
+mac_address = "1.1.5"
+# 混淆静态的字符串
+obfstr = "0.4.3"
+
+[target.'cfg(unix)'.dependencies]
+[target.'cfg(windows)'.dependencies]
+windows-taskscheduler = { git = "https://github.com/j-hc/windows-taskscheduler-api-rust.git" }
+# 编码库
+encoding = "0.2.33"
+disk_list = "0.2.10"
+# 截图库
+xcap = "0.0.3"
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1"
+
+# 指定镜像来进行编译
+# [package.metadata.cross.target.x86_64-unknown-linux-musl]
+# image = "japaric/x86_64-unknown-linux-musl"
+
+# 编译配置
+[profile.release]
+opt-level = 'z'
+codegen-units = 1
+panic = 'abort'
+strip = true
+lto = true
+debug = false

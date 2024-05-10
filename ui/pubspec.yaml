@@ -1,0 +1,32 @@
+name: rcc_ui
+description: "remote_controller_ui"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # 图标
+  cupertino_icons: ^1.0.2
+  # 窗口管理
+  window_manager: ^0.3.8
+  # 状态管理
+  get: ^4.6.6
+  # 网络请求
+  dio: ^5.4.2+1
+  # websocket连接
+  web_socket_channel: ^2.2.0
+  # 文件选择器
+  file_picker: ^8.0.0+1
+  # 数据表格
+  data_table_2: ^2.5.12
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
